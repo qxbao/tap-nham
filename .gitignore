@@ -1,0 +1,4 @@
+# Không push mấy cái dưới đây đâu nhe
+csv/
+*.log
+test*.*

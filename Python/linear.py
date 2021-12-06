@@ -36,7 +36,7 @@ getY = np.poly1d([lin.slope, lin.intercept])
 print("Độ chính xác kết quả dựa theo dữ liệu đầu vào: {}% ".format(abs(lin.rvalue)*100))
 if abs(lin.rvalue)*100 < 60:
     print("==> Có thể đã xuất hiện phần tử đột biến gây nhiễu hoặc dữ liệu đầu vào quá ít")
-    print("====> Sai số rất lớn. Đại số tuyến tính không còn phù hợp")
+    print("====> Sai số rất lớn.")
 
 query = int(input("Nhập chiều cao để ước lượng: "))
 kqua = getY(query)

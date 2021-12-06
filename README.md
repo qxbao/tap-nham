@@ -7,7 +7,7 @@ Xin chào. Đây là rep lưu trữ đủ loại code đơn lẻ mà mình cũng
 - [Instagram](https://instagram.com/qxbao)
 - [Email](mailto:dquanbao@gmail.com)
 
-*Ưu tiên giới tính nữ nhé =))) Tốc độ reply nhanh lắm yên tâm*
+*Ưu tiên các bạn nữ nhé =))) Tốc độ reply nhanh lắm yên tâm*
 
 ## Lưu ý:
 Để phòng trường hợp mất thời gian không cần thiết cho đôi bên, mong bạn dành một chút thời gian đọc vài dòng sau đây:
@@ -22,4 +22,4 @@ Xin chào. Đây là rep lưu trữ đủ loại code đơn lẻ mà mình cũng
 
 \- *Ramon Bautista, somebody from somewhere*
 
-Thế nhé :smiley:
+Thế nhé :smiley:!
