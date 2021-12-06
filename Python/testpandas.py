@@ -10,7 +10,7 @@ mydb = myclient["MachineLearning"]
 mycol = mydb["data"]
 dbquery = pd.Series(mycol.find_one({'tag':'cccn12'},{'_id':0}))
 
-def checkGender2(x,sx):
+def checkGender2(x,sx):s
     tmp = np.empty((0,2),int)
     for i in range(len(x)):
         if x[i][2]==sx:
