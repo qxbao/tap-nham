@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pymongo
 import pprint as pp
-from scipy import stats
 import pandas as pd
+from scipy import stats
 
 myclient = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
 mydb = myclient["MachineLearning"]
