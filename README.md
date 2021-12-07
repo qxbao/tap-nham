@@ -1,6 +1,6 @@
 # Tiệm tạp hóa code
 
-Xin chào. Đây là rep lưu trữ đủ loại code đơn lẻ mà mình cũng chẳng biết nên lưu vào đâu nên quăng tạm lên đây.
+Xin chào. Đây là repo lưu trữ đủ loại code đơn lẻ mà mình cũng chẳng biết nên lưu vào đâu nên quăng tạm lên đây.
 
 **Liên hệ với mình tại:**
 - [Facebook](https://facebook.com/q2theb)
