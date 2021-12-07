@@ -9,12 +9,14 @@ Xin chào. Đây là repo lưu trữ đủ loại code đơn lẻ mà mình cũn
 
 *Ưu tiên các bạn nữ nhé =))) Tốc độ reply nhanh lắm yên tâm*
 
-## Khóa học
+## Học tập
 Thật sự theo mình thấy, học code thì tự mày mò, thử nghiệm hiệu quả hơn 10 lần học lý thuyết trường lớp rồi ghi vào vở ctct... Thật ra cách học này không chỉ hiệu quả với coding thôi đâu, nhưng mà...mình không muốn bàn luận về vấn đề giáo dục ở Việt Nam nên là skip nhé :))
 
 Sau đây là một số khóa học mà mình thấy rất OK:
 
 ### - Python (A-Z):
+Python đã luôn nổi tiếng bởi sự đơn giản và hiện đại thể hiện trên từng dòng code. Với Python, bạn có thể lập trình web, làm game, code AI, vân vân và mây mây. Nếu chưa từng học bất cứ ngôn ngữ lập trình nào, Python có thể là điểm khởi đầu tuyệt vời cho bạn với những khóa học sau đây: 
+
 > 1. *[W3School - Python](https://www.w3schools.com/python)*
 : Bạn có thể học từ A-Z Python ở đây với các ví dụ đơn giản, dễ hiểu. Sẽ còn dễ dàng hơn nếu bạn đã vững nền tảng một ngôn ngữ lập trình khác từ trước. Tất cả chỉ cần vốn tiếng anh (Google Translate dịch ngôn ngữ chuyên ngành củ chuối lắm) vừa phải là được.
 
