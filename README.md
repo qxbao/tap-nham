@@ -9,6 +9,37 @@ Xin chào. Đây là repo lưu trữ đủ loại code đơn lẻ mà mình cũn
 
 *Ưu tiên các bạn nữ nhé =))) Tốc độ reply nhanh lắm yên tâm*
 
+## Khóa học
+Thật sự theo mình thấy, học code thì tự mày mò, thử nghiệm hiệu quả hơn 10 lần học lý thuyết trường lớp rồi ghi vào vở ctct... Thật ra cách học này không chỉ hiệu quả với coding thôi đâu, nhưng mà...mình không muốn bàn luận về vấn đề giáo dục ở Việt Nam nên là skip nhé :))
+
+Sau đây là một số khóa học mà mình thấy rất OK:
+
+### - Python (A-Z):
+> 1. *[W3School - Python](https://www.w3schools.com/python)*
+: Bạn có thể học từ A-Z Python ở đây với các ví dụ đơn giản, dễ hiểu. Sẽ còn dễ dàng hơn nếu bạn đã vững nền tảng một ngôn ngữ lập trình khác từ trước. Tất cả chỉ cần vốn tiếng anh (Google Translate dịch ngôn ngữ chuyên ngành củ chuối lắm) vừa phải là được.
+
+> 2. [MachineLearning w/ Sentdex](https://www.youtube.com/playlist?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3)
+: Thật sự mình rất ngại việc học qua Youtube cho đến khi tìm được khóa học này. Bạn cần xây dựng nền tảng Python trước khi tìm hiểu Machine Learning (tin mình đi, thú vị cực kỳ). Bạn sẽ biết được rằng Machine Learning không khó khăn và phức tạp như thiên hạ vẫn đồn đại.
+
+### - Web development:
+Xây dựng một website cần có BACKEND và FRONTEND *(Google nhé, giải thích thì siêuuu dài dòng)*.
+
+Để trở thành một FE Developer, bạn cần học HTML (Khung trang web)/CSS (Xây dựng giao diện)/Javascript (Cái này thì vạn năng luôn)
+
+Còn với Back-end, mình khuyến khích mọi người học PHP hoặc NodeJS(Xây dựng từ Javascript). Còn có các sự lựa chọn khác như Python, ASP.NET, GO,... nhưng mình chưa tìm hiểu nên thực sự không dám đề xuất bừa =)) PHP và NodeJS theo mình rất phù hợp với người mới tiếp cận vì cộng đồng siêu bự và code tương đối đơn giản, chưa kể tới hiệu năng siêu việt.
+
+> *link bài học sẽ được update sau*
+
+### - GIT:
+Một số bạn vẫn luôn gặp khó khăn khi tìm hiểu về GIT vì những tài liệu phức tạp và suy nghĩ "Sao phải mất thời gian, thiếu nó mình vẫn sống yên ổn đấy thôi". Ừ thì đúng vậy, cho đến ngày code bạn không chạy nữa và bạn KHÔNG-THỂ-NÀO tìm ra được bug cũng như bản backup. Khi đó, bạn sẽ nhận thấy giá trị của GIT.
+
+Dọa vậy thôi. Cứ yên tâm đi, GIT không khó khăn như vậy đâu. Mình nghĩ không cần đến 1 tiếng đồng hồ, bạn đã có thể căn bản nắm được cách sử dụng GIT rồi đó.
+
+Cứ ghi nhớ thứ tự sau đây nhé: *(config > init)* > commit > push
+
+> *[W3School - GIT](https://www.w3schools.com/git/)*
+: W3S nói vạn năng cũng không sai đâu :kissing_heart:
+
 ## Lưu ý:
 Để phòng trường hợp mất thời gian không cần thiết cho đôi bên, mong bạn dành một chút thời gian đọc vài dòng sau đây:
 
