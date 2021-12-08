@@ -11,17 +11,29 @@ path = "../inputData/intraQuarter"
 
 def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_tabledata1\">'):
     statsPath = path + "/_KeyStats"
-    pf = pd.DataFrame(columns=['Thời gian','UNIX','Code','Nợ/vốn'])
+    pf = pd.DataFrame(columns=['Thời gian','UNIX','Code','Nợ/vốn',"Giá","Stockchange","SP500","SP500change"])
+
+    sp = pd.read_csv('../../csv/fedSP500.csv')
+    # Có thể mình sẽ up file này lên (đã qua xử lý) để mọi người đỡ một bước đi kiếm data
+    # rồi lại ngồi reformat rất cực.
+
     # Hàm os.walk() trả về một tuple mang ba giá trị (root, dir, file) trong đường dẫn tham số
     # Bạn có thể print bên dưới để xem kết quả root trả về sẽ nhìn ra sao (trông rối cm)
     statsList = [x[0] for x in os.walk(statsPath)]
 
+    code_list=[]
+
     # Không lấy phần tử đầu tiên vì đấy là folder gốc, không dùng tới
     for dir in statsList[1:]:
         allFile = os.listdir(dir) # Hiển thị tất cả file chứa trong thư mục i
+        print(dir)
+        # Giá trị khởi đầu
+        gtkd = False
+        gtkd_SP500 = False
+
         code = dir.split('\\')[1]
         # .split(x) sẽ chia một chuỗi thành một list gồm các phần tử được chia cách bằng dấu space (nếu không truyền x) hoặc x.
-
+        code_list.append(code)
 
         if len(allFile) > 0: # Lọc những folder không có cái quái gì bên trong
             for file in allFile:
@@ -31,7 +43,7 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
 
                 unix_time = time.mktime(processed_time.timetuple())
                 # Thời gian UNIX được tính từ 1/1/1970, số thời gian trôi qua sẽ quy đổi sang giây. Hàm này nhận tham số dạng (Year, month, date,...)
-                # Hàm timetuple() nhận một Time Object và trả về tuple dạng (Year, month, date,...) phù hợp làm tham só cho time.mktime()
+                # Hàm timetuple() nhận một Time Object và trả về tuple dạng (Year, month, date,...) phù hợp làm tham số cho time.mktime()
 
                 filePath = dir + '/' + file # Tạo đường dẫn tới từng file trong vòng lặp
 
@@ -45,17 +57,55 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                     # Ép biến value sang float để lưu trữ
                     # Việc split sourcecode liên tục để có thể chọn được giá trị cần thiết
 
-                    pf = pf.append({'Thời gian':processed_time,'UNIX':unix_time,'Code':code,'Nợ/vốn':value}, ignore_index=True)
+                    sp500_time = datetime.fromtimestamp(unix_time).strftime('%Y-%m-%d')
+                    # Lấy thời gian từ folder data -> Đem so sánh và tìm ra cột tương ứng trong file CSV SP500
+                    row = sp[(sp['Ngày'] == sp500_time)]
+                    
+
+                    try:
+                        sp500_value = float(row["Lần cuối"])
+                        # Thử ép biến {giá trị cổ phiếu cuối phiên}. Nếu biến rỗng <=> Ngày {sp500_time} không
+                        # tồn tại trong file CSV 500P, lùi 3 ngày (Tránh những ngày nghỉ lễ, thứ bảy chủ nhật ctct)
+                    except:
+                        sp500_time = datetime.fromtimestamp(unix_time-259200).strftime('%Y-%m-%d')
+                        # Lùi thời gian đi 3 ngày (259200 là số giây của 3 ngày trong hệ UNIXtime)
+                        row = sp[(sp['Ngày'] == sp500_time)]
+                        sp500_value = float(row["Lần cuối"])
+
+                    try:
+                        stock_price = float(sourceCode.split("</small><big><b>")[1].split('</b></big>&nbsp;&nbsp;')[0])
+                        # Tìm kiếm giá trị cổ phiếu tương ứng trong từng file
+                    except Exception as e:
+                        pass
+                    else:
+                        if not gtkd:
+                            gtkd = stock_price
+                        if not gtkd_SP500:
+                            gtkd_SP500 = sp500_value
+                        # Nếu biến giá trị khởi đầu chưa được khởi tạo => gán price vào
+
+                        stock_change = (stock_price - gtkd)/gtkd*100
+                        SP500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
+                        # Hiển thị số phần trăm tăng/giảm so với phiên trước
+
+                        print(file)
+                    pf = pf.append({'Thời gian':processed_time,
+                                'UNIX':unix_time,
+                                'Code':code,
+                                'Nợ/vốn':value,
+                                'Stockchange':stock_change,
+                                'Giá':stock_change,
+                                'SP500change': SP500change,
+                                'SP500':sp500_value
+                                }, ignore_index=True)
                     # Thêm giá trị vào DataFrame
                     # Mình bị một lỗi rất ngớ ngẩn ở đây là quên viết "pf = pf.append()" mà chỉ viết "pf.append" thôi
                     # nên đến cuối cùng cái file CSV trống trơn :v Nhớ nhé, hàm .append() này return lại một bản copy
                     # thôi nên phải khai báo giá trị cho nó.
 
                 except Exception as e:
-                    print(e)
                     pass
                 # Try...except... này các bạn nên tự tìm hiểu thêm. Đại khái là nếu cụm Try xảy ra lỗi thì chạy cụm Except.
-
     saveName = keyword;
     for key in [' ',':','(',')','/']:
         saveName = saveName.replace(key,'')
@@ -63,9 +113,9 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
     # Tạo tên savefile từ tham số keyword. Hàm .replace(x,y) chỉ đơn giản thay x bằng y thôi.
     # À nhân tiện nếu có thể nhớ tìm hiểu RegEx nha. Không chỉ tiện mà còn siêu tiện luôn đó
 
-    pf.to_csv(saveName)
-    # Lưu thông tin về file CSV. Chạy code sẽ khá lâu đó (i5 ~ 7p, i7 ~ 1p) nên đừng tắt giữa chừng nha
+    pf.to_csv('../../csv/'+saveName)
+    # Lưu thông tin về file CSV (Tùy chỉnh path). Chạy code sẽ khá lâu đó (i5 ~ 7p, i7 ~ 1p) nên đừng tắt giữa chừng nha
 
-# statsFinder()
+statsFinder()
 #   ^^^^^^^----------- Mình ẩn cái hàm này đi vì nó chỉ cần thiết cho lần lưu trữ đầu tiên thôi. Lưu xong file rồi mà lỡ
 #                      chạy thì nó ngốn CPU lắm :p Các bạn cứ uncomment rồi chạy nếu muốn xuất file CSV nhé.

@@ -2,3 +2,4 @@
 csv/
 *.log
 test*.*
+!csv/fedSP500.csv
