@@ -2,7 +2,12 @@ import pandas as pd
 import numpy as np
 import os
 import time
+from matplotlib import style
+import matplotlib.pyplot as plt
 from datetime import datetime
+import re
+
+style.use("dark_background")
 
 # Config đường dẫn tới tài liệu chứa dữ liệu
 # Có thể mình sẽ up luôn folder data lên (Hên xui) bởi vì nó tương đối nặng. Nếu
@@ -11,7 +16,7 @@ path = "../inputData/intraQuarter"
 
 def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_tabledata1\">'):
     statsPath = path + "/_KeyStats"
-    pf = pd.DataFrame(columns=['Thời gian','UNIX','Code','Nợ/vốn',"Giá","Stockchange","SP500","SP500change"])
+    pf = pd.DataFrame(columns=['Thời gian','UNIX','Code','Nợ/vốn',"Giá","Stockchange","SP500","SP500change","Diff"])
 
     sp = pd.read_csv('../../csv/fedSP500.csv')
     # Có thể mình sẽ up file này lên (đã qua xử lý) để mọi người đỡ một bước đi kiếm data
@@ -53,14 +58,17 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                 # time.sleep(60) đằng sau để tạm ngừng 60 giây giữa mỗi lần print thay vì print hết sạch (cho dễ quan sát)
 
                 try:
-                    value = float(sourceCode.split(keyword+bonus)[1].split('</td>')[0])
+                    value = -444
+                    try:
+                        value = float(sourceCode.split(keyword+bonus)[1].split('</td>')[0])
+                    except Exception as e:
+                        value = float(sourceCode.split(keyword+'</td>\n<td class="yfnc_tabledata1">')[1].split('</td>')[0])
                     # Ép biến value sang float để lưu trữ
                     # Việc split sourcecode liên tục để có thể chọn được giá trị cần thiết
 
                     sp500_time = datetime.fromtimestamp(unix_time).strftime('%Y-%m-%d')
                     # Lấy thời gian từ folder data -> Đem so sánh và tìm ra cột tương ứng trong file CSV SP500
                     row = sp[(sp['Ngày'] == sp500_time)]
-                    
 
                     try:
                         sp500_value = float(row["Lần cuối"])
@@ -71,33 +79,46 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                         # Lùi thời gian đi 3 ngày (259200 là số giây của 3 ngày trong hệ UNIXtime)
                         row = sp[(sp['Ngày'] == sp500_time)]
                         sp500_value = float(row["Lần cuối"])
-
+                    stock_price = False
                     try:
-                        stock_price = float(sourceCode.split("</small><big><b>")[1].split('</b></big>&nbsp;&nbsp;')[0])
+                        stock_price = float(sourceCode.split("</small><big><b>")[1].split('</b></big>')[0])
                         # Tìm kiếm giá trị cổ phiếu tương ứng trong từng file
-                    except Exception as e:
-                        pass
-                    else:
-                        if not gtkd:
-                            gtkd = stock_price
-                        if not gtkd_SP500:
-                            gtkd_SP500 = sp500_value
-                        # Nếu biến giá trị khởi đầu chưa được khởi tạo => gán price vào
+                    except:
+                        try:
+                            stock_price = (sourceCode.split("</small><big><b>")[1].split('</b></big>')[0])
+                            stock_price = float(re.search(r'(\d{1,8}\.\d{1,8})',stock_price).group(1))
+                            # Regex
 
-                        stock_change = (stock_price - gtkd)/gtkd*100
-                        SP500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
-                        # Hiển thị số phần trăm tăng/giảm so với phiên trước
+                        except:
+                            try:
+                                stock_price = sourceCode.split('<p> <span class="time_rtq_ticker">')[1].split('</span>')[0]
+                                stock_price = float(re.search(r'(\d{1,8}\.\d{1,8})',stock_price).group(1))
+                            except:
+                                pass
+                    if not gtkd:
+                        gtkd = stock_price
+                    if not gtkd_SP500:
+                        gtkd_SP500 = sp500_value
+                    # Nếu biến giá trị khởi đầu chưa được khởi tạo => gán price vào
 
-                        print(file)
-                    pf = pf.append({'Thời gian':processed_time,
+                    stock_change = (stock_price - gtkd)/gtkd*100
+                    SP500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
+                    # Hiển thị số phần trăm tăng/giảm so với phiên trước
+
+                    # print(file)
+                    if stock_price and value != -44:
+                        pf = pf.append({'Thời gian':processed_time,
                                 'UNIX':unix_time,
                                 'Code':code,
                                 'Nợ/vốn':value,
                                 'Stockchange':stock_change,
-                                'Giá':stock_change,
+                                'Giá':stock_price,
                                 'SP500change': SP500change,
-                                'SP500':sp500_value
+                                'SP500':sp500_value,
+                                'Diff':stock_change - SP500change
                                 }, ignore_index=True)
+                    else:
+                        pass
                     # Thêm giá trị vào DataFrame
                     # Mình bị một lỗi rất ngớ ngẩn ở đây là quên viết "pf = pf.append()" mà chỉ viết "pf.append" thôi
                     # nên đến cuối cùng cái file CSV trống trơn :v Nhớ nhé, hàm .append() này return lại một bản copy
@@ -106,6 +127,20 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                 except Exception as e:
                     pass
                 # Try...except... này các bạn nên tự tìm hiểu thêm. Đại khái là nếu cụm Try xảy ra lỗi thì chạy cụm Except.
+                # Còn nếu thành công thì chạy tiếp cụm else hoặc chạy tiếp nếu k có else
+    print("DONE!")
+    # for ticker in code_list:
+    #     try:
+    #         print('Check')
+    #         code_row = pf[(pf['Code']==ticker)].set_index(["Thời gian"])
+    #         code_row['Diff'].plot(label=ticker)
+    #         plt.legend()
+    #     except Exception as e:
+    #         print(str(e))
+    #         pass
+    # print('Done 2')
+    # plt.show()
+
     saveName = keyword;
     for key in [' ',':','(',')','/']:
         saveName = saveName.replace(key,'')

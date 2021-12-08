@@ -21,7 +21,7 @@ Python đã luôn nổi tiếng bởi sự đơn giản và hiện đại thể 
 : Bạn có thể học từ A-Z Python ở đây với các ví dụ đơn giản, dễ hiểu. Sẽ còn dễ dàng hơn nếu bạn đã vững nền tảng một ngôn ngữ lập trình khác từ trước. Tất cả chỉ cần vốn tiếng anh (Google Translate dịch ngôn ngữ chuyên ngành củ chuối lắm) vừa phải là được.
 
 > 2. [MachineLearning w/ Sentdex](https://www.youtube.com/playlist?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3)
-: Thật sự mình rất ngại việc học qua Youtube cho đến khi tìm được khóa học này. Bạn cần xây dựng nền tảng Python trước khi tìm hiểu Machine Learning (tin mình đi, thú vị cực kỳ). Bạn sẽ biết được rằng Machine Learning không khó khăn và phức tạp như thiên hạ vẫn đồn đại.
+: Thật sự mình rất ngại việc học qua Youtube cho đến khi tìm được khóa học này. Bạn cần xây dựng nền tảng Python trước khi tìm hiểu Machine Learning cơ bản (tin mình đi, thú vị cực kỳ). Bạn sẽ biết được rằng Machine Learning không khó khăn và phức tạp như thiên hạ vẫn đồn đại, ít nhất trước khi nó đi vào chuyên sâu.
 
 ![Không xem được ảnh hả](https://pythonprogramming.net/static/images/svm/machineLearning.png)
 

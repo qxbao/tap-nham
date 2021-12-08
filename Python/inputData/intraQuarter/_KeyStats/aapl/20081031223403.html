@@ -56,7 +56,7 @@ fncsubtit,#yfncbrobtn,#yfncsumtab,
 .yfncnhltt a {
     position: relative;
 	display: block; /* opera */
-	width: 42px; 
+	width: 42px;
 	height: 31px;
 }
 .yfncnhltt img {
@@ -120,7 +120,7 @@ function showTrackers(val) {
 	if(val == "inline") {
 		document.getElementById("displayYearEl").style.color = "#ec008c";
 		document.getElementById("displayMonthEl").style.color = "#ec008c";
-		document.getElementById("displayDayEl").style.color = "#ec008c";		
+		document.getElementById("displayDayEl").style.color = "#ec008c";
 	} else {
 		document.getElementById("displayYearEl").innerHTML = displayYear;
 		document.getElementById("displayYearEl").style.color = "#ff0";
@@ -135,8 +135,8 @@ function showTrackers(val) {
 }
 function getElementX2(obj) {
 	var thing = jQuery(obj);
-	if((thing == undefined) 
-			|| (typeof thing == "undefined") 
+	if((thing == undefined)
+			|| (typeof thing == "undefined")
 			|| (typeof thing.offset == "undefined")) {
 		return getElementX(obj);
 	}
@@ -166,8 +166,8 @@ function trackMouseMove(event,element) {
 	if(monthOff % 2 == 1) {
 		day = 15;
 	}
-	var dateString = 
-		zeroPad(year + firstYear) + 
+	var dateString =
+		zeroPad(year + firstYear) +
 		zeroPad(monthOfYear+1,2) +
 		zeroPad(day,2) + "000000";
 
@@ -210,49 +210,49 @@ function trackMouseMove(event,element) {
        </td>
        <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
            <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody>
-			
+
            <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
            <tr style="width:110px;height:16px;font-size:10px!important;">
            	<td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
-               
+
 		                <a href="/web/20080123062845/http://finance.yahoo.com/q/ks?s=AAPL" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="23 Jan 2008"><strong>JAN</strong></a>
-		                
+
                </td>
                <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 22:34:03 Oct 31, 2008">OCT</td>
 				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
-               
+
 		                <a href="/web/20081203234154/http://finance.yahoo.com/q/ks?s=AAPL" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="3 Dec 2008"><strong>DEC</strong></a>
-		                
+
                </td>
            </tr>
 
            <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
            <tr>
                <td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
-               
+
 		                <a href="/web/20081029211451/http://finance.yahoo.com/q/ks?s=aapl" title="21:14:51 Oct 29, 2008" style="background-color:transparent;border:none;"><img src="/static/images/toolbar/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0" /></a>
-		                
+
                </td>
                <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 22:34:03 Oct 31, 2008">31</td>
 				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
-               
+
 		                <a href="/web/20081203234154/http://finance.yahoo.com/q/ks?s=AAPL" title="23:41:54 Dec 3, 2008" style="background-color:transparent;border:none;"><img src="/static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0"/></a>
-		                
+
 			    </td>
            </tr>
 
            <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
            <tr style="width:110px;height:13px;font-size:9px!important;">
 				<td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
-               
+
 		                <a href="/web/20071011042916/http://finance.yahoo.com/q/ks?s=aapl" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="11 Oct 2007"><strong>2007</strong></a>
-		                
+
                </td>
                <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 22:34:03 Oct 31, 2008">2008</td>
 				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
-               
+
 		                <a href="/web/20091112145338/http://finance.yahoo.com/q/ks?s=Aapl" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="12 Nov 2009"><strong>2009</strong></a>
-		                
+
 				</td>
            </tr>
            </tbody></table>
@@ -268,7 +268,7 @@ function trackMouseMove(event,element) {
        <a style="position:relative; white-space:nowrap; width:450px;height:27px;" href="" id="wm-graph-anchor">
        <div id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:450px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
 			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;"
-				onmouseover="showTrackers('inline');" 
+				onmouseover="showTrackers('inline');"
 				onmouseout="showTrackers('none');"
 				onmousemove="trackMouseMove(event,this)"
 				alt="sparklines"
@@ -276,16 +276,16 @@ function trackMouseMove(event,element) {
 				height="27"
 				border="0"
 				src="/web/jsp/graph.jsp?graphdata=450_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000001_2004:-1:010001010101_2005:-1:111000000001_2006:-1:190421600000_2007:-1:143222203300_2008:9:100000000304_2009:-1:200000000110_2010:-1:000000000000_2011:-1:000010003210_2012:-1:100010001200_2013:-1:100110010000"></img>
-			<img id="wbMouseTrackYearImg" 
+			<img id="wbMouseTrackYearImg"
 				style="display:none; position:absolute; z-index:9010;"
-				width="25" 
+				width="25"
 				height="27"
 				border="0"
 				src="/static/images/toolbar/transp-yellow-pixel.png"></img>
 			<img id="wbMouseTrackMonthImg"
-				style="display:none; position:absolute; z-index:9011; " 
+				style="display:none; position:absolute; z-index:9011; "
 				width="2"
-				height="27" 
+				height="27"
 				border="0"
 				src="/static/images/toolbar/transp-red-pixel.png"></img>
        </div>
@@ -348,15 +348,15 @@ function trackMouseMove(event,element) {
             N/A
           </td></tr><tr><td class="yfnc_tablehead1" width="75%">Dividend Date<font size="-1"><sup>3</sup></font>:</td><td class="yfnc_tabledata1">N/A</td></tr><tr><td class="yfnc_tablehead1" width="75%">Ex-Dividend Date<font size="-1"><sup>4</sup></font>:</td><td class="yfnc_tabledata1">21-Nov-95</td></tr><tr><td class="yfnc_tablehead1" width="75%">Last Split Factor (new per old)<font size="-1"><sup>2</sup></font>:</td><td class="yfnc_tabledata1">2:1</td></tr><tr><td class="yfnc_tablehead1" width="75%">Last Split Date<font size="-1"><sup>3</sup></font>:</td><td class="yfnc_tabledata1">28-Feb-05</td></tr></table></td></tr></table><br></td></tr><tr><td colspan="3"><br><table width="90%" class="yfnc_toolboxout1" align="center" cellpadding="1" cellspacing="0" border="0"><tr><td><table width="100%" cellpadding="5" cellspacing="0" border="0"><tr><td class="yfnc_toolboxfilla1" align="center" valign="top"><img src="/web/20081031223403im_/http://us.i1.yimg.com/us.yimg.com/i/us/fi/gr/track_trns_1.gif" width="10" height="10" alt="Add to My Portfolio">&nbsp;<a href="/web/20081031223403/http://edit.finance.yahoo.com/ec?.src=quote&.intl=us&.sym=AAPL&.done=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fks%3Fs%3Daapl">Add to Portfolio</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/web/20081031223403im_/http://us.i1.yimg.com/us.yimg.com/i/us/fi/gr/alert_trns_1.gif" width="10" height="10" alt="Set Alert">&nbsp;<a href="/web/20081031223403/http://alerts.yahoo.com/alerts/rdr.php?nep=stockpm&.pf=AAPL&.done=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fks%3Fs%3Daapl">Set Alert</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="/web/20081031223403im_/http://us.i1.yimg.com/us.yimg.com/i/us/fi/gr/mail_1.gif" width="10" height="10" alt="Email to a Friend">&nbsp;<a href="/web/20081031223403/http://m2f.news.yahoo.com/mailto?url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fks%3Fs%3Daapl&title=Key%20Statistics&prop=finquote&locale=us">Email to a Friend</a></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1"><spacer type="block" width="1" height="1"></td></tr></table><table width="100%" cellpadding="5" cellspacing="0" border="0"><tr><td class="yfnc_toolboxfillb1" align="center"><table cellpadding="4" cellspacing="0" border="0"><tr><td align="center"><form action="/web/20081031223403/http://finance.yahoo.com/q/ks" accept-charset="utf-8"><small>Get <b>Key Statistics</b> for Another Symbol: <input type="text" name="s" size="4"><input type="submit" value="GO"> <a href="/web/20081031223403/http://finance.yahoo.com/lookup">Symbol Lookup</a></small></form></td></tr></table><table cellpadding="0" cellspacing="0" border="0" width="95%"><tr><td class="yfnc_toolboxfillhra1" height="1"><spacer type="block" width="1" height="1"/></td></tr><tr><td class="yfnc_toolboxfillhrb1" height="1"><spacer type="block" width="1" height="1"/></td></tr></table><table cellpadding="4" cellspacing="0" border="0" width="80%"><tr valign="top"><td width="1%">&#149;</td><td><a href="/web/20081031223403/http://yahoo.ar.wilink.com/asp/YAH1_search_ENG.asp">Annual Reports</a></td><td width="1%">&#149;</td><td><a href="/web/20081031223403/http://biz.yahoo.com/p/">Sector Analysis</a></td></tr></table></td></tr></table></td></tr></table><br><table cellpadding="2" border="0" cellspacing="0" width="100%"><tr><td height="10" nowrap><spacer height="10" width="1" type="block"></spacer></td></tr><tr><td align="center">See <a href="/web/20081031223403/http://help.yahoo.com/help/us/fin/research/research-12.html">Key Statistics Help</a> for definitions of terms used.</td></tr><tr><td align="center"><small><b>Abbreviation Guide: K</b> = Thousands; <b>M</b> = Millions; <b>B</b> = Billions
           </small><br><small><b>mrq</b> = Most Recent Quarter
-            
+
               (as of
               27-Sep-08)
             </small><br><small><b>ttm</b> = Trailing Twelve Months
-            
+
               (as of
               27-Sep-08)
             </small><br><small><b>yoy</b> = Year Over Year
-            
+
               (as of
               27-Sep-08)
             </small><br><small><b>lfy</b> = Last Fiscal Year (as of 27-Sep-08)
@@ -378,7 +378,7 @@ function trackMouseMove(event,element) {
           }
         //-->
         </script></body><script type="text/javascript" src="/web/20081031223403js_/http://us.js2.yimg.com/us.js.yimg.com/i/us/fi/js/yahoo_dom_event_cookie_connection_2.5.2.js"></script><script src="/web/20081031223403js_/http://us.js2.yimg.com/us.js.yimg.com/i/us/fi/yfss/js/autocomplete_container_ylc_yfi_20070924.js"></script><script src="/web/20081031223403js_/http://us.js2.yimg.com/us.js.yimg.com/i/us/fi/yfss/js/yfss_concat_200802291608.js"></script><script>
-		  YAHOO.util.Event.addListener(window, "load", function() { 
+		  YAHOO.util.Event.addListener(window, "load", function() {
 		    var ss = new YAHOO.Finance.SymbolSuggest();
 		    ss.init("searchQuotes", "txtQuotes");
 		    ss.setServer("/web/20081031223403/http://d.yimg.com/autoc.finance.yahoo.com/autoc");
