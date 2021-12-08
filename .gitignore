@@ -1,5 +1,5 @@
 # Không push mấy cái dưới đây đâu nhe
-csv/
+csv/*
+!csv/fedSP500.csv
 *.log
 test*.*
-!csv/fedSP500.csv
