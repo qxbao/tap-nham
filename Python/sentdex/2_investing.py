@@ -102,7 +102,7 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                     # Nếu biến giá trị khởi đầu chưa được khởi tạo => gán price vào
 
                     stock_change = (stock_price - gtkd)/gtkd*100
-                    SP500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
+                    sp500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
                     # Hiển thị số phần trăm tăng/giảm so với phiên trước
 
                     # print(file)
@@ -113,9 +113,9 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                                 'Nợ/vốn':value,
                                 'Stockchange':stock_change,
                                 'Giá':stock_price,
-                                'SP500change': SP500change,
+                                'SP500change': sp500change,
                                 'SP500':sp500_value,
-                                'Diff':stock_change - SP500change
+                                'Diff':stock_change - sp500change
                                 }, ignore_index=True)
                     else:
                         pass

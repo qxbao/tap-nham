@@ -3,3 +3,4 @@ csv/*
 !csv/fedSP500.csv
 *.log
 test*.*
+inputData/*
