@@ -4,3 +4,4 @@ csv/*
 *.log
 test*.*
 inputData/*
+Python/inputData/*

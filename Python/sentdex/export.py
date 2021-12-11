@@ -1,3 +1,5 @@
+# File này hướng dẫn các bạn cách scrape data từ các file HTML, sau này có thể áp dụng để nhận data từ những nguồn khác. Nên nhớ, machine learning đưa ra kết quả như nào phụ thuộc hầu hết vào data đầu vào
+
 import pandas as pd
 import numpy as np
 import os
@@ -14,7 +16,7 @@ style.use("dark_background")
 # tải về các bạn nhớ chỉnh lại path nhe.
 path = "../inputData/intraQuarter"
 
-def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_tabledata1\">'):
+def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class="yfnc_tabledata1">'):
     statsPath = path + "/_KeyStats"
     pf = pd.DataFrame(columns=['Thời gian','UNIX','Code','Nợ/vốn',"Giá","Stockchange","SP500","SP500change","Diff"])
 
@@ -101,12 +103,12 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class=\"yfnc_
                         gtkd_SP500 = sp500_value
                     # Nếu biến giá trị khởi đầu chưa được khởi tạo => gán price vào
 
-                    stock_change = (stock_price - gtkd)/gtkd*100
-                    sp500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
                     # Hiển thị số phần trăm tăng/giảm so với phiên trước
-
                     # print(file)
                     if stock_price and value != -44:
+                        stock_change = (stock_price - gtkd)/gtkd*100
+                        sp500change = (sp500_value-gtkd_SP500)/gtkd_SP500*100
+                        # Thêm một row vào data
                         pf = pf.append({'Thời gian':processed_time,
                                 'UNIX':unix_time,
                                 'Code':code,
