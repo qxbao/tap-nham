@@ -26,25 +26,25 @@ Một số thư viện cần được cài đặt để có thể chạy đượ
   Trước khi cài đặt các thư viện như scipy, pandas, sklearn,... bạn cần cài đặt numpy bằng câu lệnh dưới đây:
 
   ```sh
-  \>pip install *numpy*
+  pip install *numpy*
   ```
 
 - **PANDAS**
   ```sh
-  \>pip install *pandas*
+  pip install *pandas*
   ```
 
 - **MATPLOTLIB**
 
   ```sh
-  \>pip install *matplotlib*
+  pip install *matplotlib*
   ```
 
 - **SKLEARN**
   ```sh
-  \>pip install *sklearn*
+  pip install *sklearn*
   ```
 - **SCIPY**
   ```sh
-  \>pip install *scipy*
+  pip install *scipy*
   ```

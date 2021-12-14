@@ -1,20 +1,34 @@
 # Naive Bayes (Bayes ngây thơ)
 
 ## Định lý Bayes
-Để mình đưa ra ví dụ cho dễ hiểu:
 
-Một bộ kit hỗ trợ test Covid-19 cho bệnh nhân (gọi là bộ K). Tỉ lệ người nhiễm Covid là 1/100 người (tương đương 1%), tỉ lệ bệnh nhân mắc Covid nhưng K báo âm tính là 10%, tỉ lệ bệnh nhân âm tính nhưng K báo dương tính là 10%. Vậy, nếu bạn sử dụng bộ K và được kết quả dương tính, tỉ lệ mắc Covid của bạn bây giờ là bao nhiêu?
+Cái định lý này rất khô khan, nhàm chán và thực sự cũng không cần thiết để hiểu rõ nhưng mình vẫn sẽ nêu ở đây. Nếu bạn đọc tới lần thứ 3 và vẫn chưa hiểu, tốt nhất là nên bỏ qua.
 
-> Thật ra không lớn lắm đâu. Chỉ 8,3% thôi
+**Định nghĩa:**
+- P(A) = Tỉ lệ xảy ra A
+- P(B) = TỈ lệ xảy ra B
+- P(A|B) = Tỉ lệ xảy ra A khi biết B đã xảy ra
 
-Tại sao lại như vậy? Đọc kỹ các số liệu trên, ta có thể thấy tỉ lệ K đưa ra kết quả dương tính là 1% [thật sự nhiễm Covid] + 9.9% [âm tính nhưng K báo sai] - 0.1% [dương tính nhưng K báo âm tính] = 10.8%. Như vậy, dù đạt được kết quả âm tính, bạn vẫn chỉ có:
+Lấy ví dụ như này nhé, tỉ lệ nhiễm Covid là 1 người/100 người, tỉ lệ kit test nhanh đưa ra kết quả sai là 10%, như vậy:
 
-> (1 - 0.1)/(10.8) = 0.08333 = ~8.3% tỉ lệ thực sự mắc Covid mà thôi
+**P(Covid) = 1%** Tỉ lệ nhiễm Covid
 
-P\(C\) = 0.1%
+**P(noCovid) = 100% - P(Covid) = 99%** Tỉ lệ không nhiễm Covid
 
-<sup><sub>[Tỉ lệ nhiễm Covid] = 1%</sub></sup>
+**P(Pos) = P(Pos|Covid) + P(Pos|noCovid) = (1% \* 90%) + (99% \* 10%) = 10.8%** Tỉ lệ kit test đưa ra kết quả âm tính
 
-P(C|Dt) = P\(C\) * P\(Dt|C\)
+Như vậy, ta đã biết được 3 tỉ lệ trên. Ta sẽ xét xem nếu bạn nhận được kết quả dương tính, vậy tỉ lệ nhiễm Covid của bạn sẽ tăng lên bao nhiêu nhé. Vẫn là 1% hay là 50%, 100% đây nhỉ?
 
-<sup><sub>[Tỉ lệ nhiễm Covid cho ra kết quả dương tính] = [Tỉ lệ nhiễm Covid] * [Tỉ lệ kết quả dương tính nhưng thực sự nhiễm Covid]</sub></sup>
+**P(Covid|Pos) = P(Pos|Covid) / P(Pos) = 90% / 10.8% = 8.333%** Tỉ lệ nhiễm Covid khi biết kết quả dương tính với Covid
+
+Hay công thức đầy đủ là:
+
+**P(Covid|Pos) = [P(Pos|Covid) \* P(Covid)] / P(Pos)**
+
+**<=> P(A|B) = [P(B|A) \* P(A)] / P(B)**
+
+Như vậy test ra dương tính cũng không phải buồn nhe, bạn mới chỉ tăng thêm 7.3% khả năng nhiễm Covid thoai :smile:
+
+Đó là cách định lý Bayes đưa ra dự đoán từ dữ liệu đầu vào. Bạn cho biết tỉ lệ nhiễm Covid và độ chính xác của kit test, bạn biết được tỉ lệ nhiễm Covid khi test ra kết quả dương tính và nhiều giá trị khác như **P(noCovid|Pos), P(Covid|Neg), P(noCovid|Neg)**
+
+## Naive Bayes (Bayes ngây thơ)
