@@ -148,11 +148,11 @@ def statsFinder(keyword="Total Debt/Equity (mrq):",bonus='</td><td class="yfnc_t
         saveName = saveName.replace(key,'')
     saveName = saveName + '.csv'
     # Tạo tên savefile từ tham số keyword. Hàm .replace(x,y) chỉ đơn giản thay x bằng y thôi.
-    # À nhân tiện nếu có thể nhớ tìm hiểu RegEx nha. Không chỉ tiện mà còn siêu tiện luôn đó
+    # Nếu có thể nhớ tìm hiểu RegEx nha. Không chỉ tiện mà còn siêu tiện luôn đó
 
     pf.to_csv('../../csv/'+saveName)
     # Lưu thông tin về file CSV (Tùy chỉnh path). Chạy code sẽ khá lâu đó (i5 ~ 7p, i7 ~ 1p) nên đừng tắt giữa chừng nha
 
-statsFinder()
+# statsFinder()
 #   ^^^^^^^----------- Mình ẩn cái hàm này đi vì nó chỉ cần thiết cho lần lưu trữ đầu tiên thôi. Lưu xong file rồi mà lỡ
 #                      chạy thì nó ngốn CPU lắm :p Các bạn cứ uncomment rồi chạy nếu muốn xuất file CSV nhé.
