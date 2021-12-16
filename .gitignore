@@ -5,4 +5,4 @@ csv/*
 test*.*
 inputData/*
 Python/inputData/*
-Python/uda/*/
+Python/uda/miniproject/
