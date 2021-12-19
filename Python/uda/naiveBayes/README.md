@@ -15,7 +15,7 @@ Lấy ví dụ như này nhé, tỉ lệ nhiễm Covid là 1 người/100 ngư�
 
 **P(noCovid) = 100% - P(Covid) = 99%** << Tỉ lệ không nhiễm Covid
 
-**P(Pos) = P(Pos|Covid) + P(Pos|noCovid) = (1% \* 90%) + (99% \* 10%) = 10.8%** << Tỉ lệ kit test đưa ra kết quả âm tính
+**P(Pos) = P(Pos|Covid) + P(Pos|noCovid) = (1% \* 90%) + (99% \* 10%) = 10.8%** << Tỉ lệ kit test đưa ra kết quả dương tính (Positive)
 
 Như vậy, ta đã biết được 3 tỉ lệ trên. Ta sẽ xét xem nếu bạn nhận được kết quả dương tính, vậy tỉ lệ nhiễm Covid của bạn sẽ tăng lên bao nhiêu nhé. Vẫn là 1% hay là 50%, 100% đây nhỉ?
 
@@ -31,9 +31,9 @@ Hay công thức đầy đủ là:
 
 Đó là cách định lý Bayes đưa ra dự đoán từ dữ liệu đầu vào. Bạn cho biết tỉ lệ nhiễm Covid và độ chính xác của kit test, bạn biết được tỉ lệ nhiễm Covid khi test ra kết quả dương tính và nhiều giá trị khác như **P(noCovid|Pos), P(Covid|Neg), P(noCovid|Neg)**
 
-## Naive Bayes (Bayes ngây thơ)
+## Bayes ngây thơ
 
-Vậy Bayes ngây thơ với Bayes không phải là một à? Ừ thì, Thomas Bayes là nhân vật có thật và mình không nghĩ ông ấy "ngây thơ" đâu... Naive Bayes là một thuật toán dựa trên định lý Bayes, và thứ ngây thơ ở đây là cách thuật toán ấy đưa ra dự đoán. Tại sao lại thế hả? Cùng tìm hiểu nào!
+Vậy Bayes ngây thơ và Bayes không phải là một à? Ừ thì, Thomas Bayes là nhân vật có thật và mình không nghĩ ông ấy "ngây thơ" cho lắm... Naive Bayes là một thuật toán dựa trên định lý Bayes, thứ ngây thơ ở đây là thuật toán xử lý dữ liệu và đưa ra dự đoán. Tại sao lại thế hả? Cùng tìm hiểu nào!
 
 Vì mình khá ghét việc chỉ ghi công thức suông nên sẽ có một ví dụ như sau cho mọi người:
 
@@ -43,7 +43,7 @@ Vì mình khá ghét việc chỉ ghi công thức suông nên sẽ có một v�
 
 Truyền hai tham số trên vào thuật toán Naive Bayes và đặt ra câu hỏi:
 
-**Với một câu nói gồm các từ ngữ liên quan tới vấn đề học tập VÀ phim ảnh, ai là người có khả năng nói ra nó hơn?**
+**Với một câu nói chỉ gồm các từ ngữ liên quan tới vấn đề học tập VÀ phim ảnh, ai là người có khả năng nói ra nó hơn?**
 
 Cùng xét các xác suất nhé. Vì ở đây có 2 người nên tỉ lệ mỗi người nói sẽ nhân thêm với 50%.
 
@@ -59,4 +59,9 @@ Hiểu được cách nó hoạt động rồi, hãy cùng tìm hiểu lí do t�
 
 Khi bạn đưa cho thuật toán một chuỗi các giá trị đầu vào, nó sẽ kiểm tra các giá trị và tần suất xuất hiện. Thế nhưng lại bỏ qua một điều khá quan trọng. Cùng đoán xem nó là gì nhỉ? Điều này xảy ra bởi cách NB dự đoán xác suất với giả định các dữ kiện độc lập với nhau.
 
-Nói sao cho dễ hiểu nhỉ? Giống như ở ví dụ trên, nếu Linh với Đức học cùng lớp với nhau, ta không thể nói tỉ lệ từ ngữ sử dụng của hai bạn không bị ảnh hưởng bởi (những) người còn lại và tồn tại độc lập được. Cũng như từng chữ trong những câu nói của ta hằng ngày, chúng luôn ảnh hưởng đến nhau. Nếu các từ ngữ tồn tại độc lập với nhau như giả định của NB và sắp xếp ngẫu nhiên loạn cả lên, không tuân theo một trật tự nhất định thì câu nói sẽ chẳng có ý nghĩa gì cả. Như vậy, có thể thấy ở một số trường hợp Bayes ngây thơ không phải sự lựa chọn tốt, nhưng cũng có nhiều trường hợp NB lại là một thuật toán vô cùng mạnh mẽ và đơn giản, tiện lợi.
+Nói sao cho dễ hiểu nhỉ? Giống như ở ví dụ trên, các từ ngữ được sử dụng không hề tồn tại độc lập. Cũng như từng chữ trong những câu nói của ta hằng ngày, chúng luôn ảnh hưởng đến nhau. Nếu các từ ngữ tồn tại độc lập với nhau như giả định của NB và sắp xếp ngẫu nhiên loạn lên, không tuân theo một trật tự nhất định thì câu nói sẽ chẳng có ý nghĩa gì cả.
+
+**Ví dụ**: Cậu học được gì từ bộ phim Titanic?
+=> Titanic cậu được bộ gì học phim từ
+
+ Như vậy, có thể thấy ở một số trường hợp Bayes ngây thơ không phải sự lựa chọn tốt, nhưng cũng có nhiều trường hợp NB lại là một thuật toán vô cùng mạnh mẽ và đơn giản, tiện lợi.
